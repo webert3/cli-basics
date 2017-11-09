@@ -275,7 +275,7 @@ Also, by default this command only works if the directories you are trying to de
 If you would like to delete a directory and all of it's contents, use the \textbf{-r} flag.\\
 \commandline{rm -r FirstDir} 
 
-This will silently remove FirstDir/Foo, FirstDir/myfile, and FirstDir/Foo2 forever. \textbf{AGAIN}, this is a powerful tool, don't blow away your entire file system but running this command on your home directory!\footnote{The WWU CS Mentors are not liable for any misuse of this command. Sorry folks!} 
+This will silently remove FirstDir/Foo, FirstDir/myfile, and FirstDir/Foo2 forever. \textbf{AGAIN}, this is a powerful tool, don't blow away your entire file system by;s  running this command on your home directory!\footnote{The WWU CS Mentors are not liable for any misuse of this command. Sorry folks!} 
 
 If you want to play it safe, use the \textbf{-i} flag and a prompt will come up before removal.\ 
 \commandline{rm -i file1}
@@ -288,7 +288,9 @@ Is your terminal covered in lines of code and difficult to determine where one p
 It is possible to refer back to those deleted commands by scrolling up in the terminal.
 
 \subsection{ctrl ($\wedge$)}
-Sometimes within bash ctrl will be denoted by `` $\wedge$ ". The ctrl key is sometimes used to send signals to the operating system. One example is ctrl-c, which interrupts a process running in the foreground\footnote{For more on signals see:  \url{https://linux.die.net/Bash-Beginners-Guide/sect_12_01.html}}. This is useful for terminating your program when it has an infinite loop!
+Sometimes within bash ctrl will be denoted by `` $\wedge$ ". The ctrl key is sometimes used to send signals to the operating system. One example is \textbf{ctrl+c}, which interrupts a process running in the foreground\footnote{For more on signals see:  \url{https://linux.die.net/Bash-Beginners-Guide/sect_12_01.html}}. This is useful for terminating your program when it has an infinite loop!
+
+% Another useful control signal is \textbf{crtl+z}.  This send the \textit{suspend} signal to the operating system, stopping the foreground process from running and giving control back to the shell. This is useful for temporally pausing a process, running some commands, then restoring it as either a background or foreground process. \textit{More on this later...
 
 \subsection{Tab completion}
 When we enter tab at the prompt it will try to finish whatever we are currently typing as long as there are no ambiguity. For example if we only had ``\textbf{file1}" in our current working directory we could view the file listing by tying ``\textbf{ls f}" and hitting tab. It will fill out the rest of the word so that you now see:
@@ -325,7 +327,7 @@ You should see the extended file listings for all three files!
 % 	\textbf{which} is a command that tells you where the program is located on the computer. 
 % 	\item Plain text files: For example, inputs and outputs from your program will generally be stored in text files. 
 % \end{itemize}\hyperref[sec:files_in_unix]{We talk more about this in the next chapter.}
-File are an essential part of UNIX and UNIX-like systems \hyperref[sec:files_in_unix]{(more on this in chapter 2)}, so how do we go about editing them from the command line? 
+Files are an essential part of UNIX and UNIX-like systems \hyperref[sec:files_in_unix]{(more on this in chapter 2)}, so how do we go about editing them from the command line? 
 
 
 \subsection{Text Editors}
@@ -337,7 +339,9 @@ There are several pure command line editors like \textit{vim} and \textit{emacs}
 \commandline{atom myfile}
 Note that when you run one of the above commands it may open a new window and you will no longer be able to use the command line until you close the newly opened window. This is because the shell kicked off a \textit{foreground} process by default.\footnote{More information on Unix/Linux processes and process management can be found here: \url{https://www.tutorialspoint.com/unix/unix-processes.htm}} You can get around this by doing the following:
 \commandline{gedit myfile \&}
-This will open gedit (or whatever program you choose) in the \textit{background} and allow you to continue using the command line in the forground. \\
+This will open gedit (or whatever program you choose) in the \textit{background} and allow you to continue using the command line in the \textit{foreground}.
+
+\textbf{ASIDE: } If you forget to add the `\&' after your command, but you intended to run it in the background, you can send the control signal \textbf{ctrl+z} which suspends the current process. After that, type the command \textbf{bg} to have the process run in the background.\\
 
 \begin{ex} Create a file and write to it.
     \begin{enumerate}
@@ -364,7 +368,7 @@ This program is more primitive and only moves one page at a time. Hit space to m
 
 Some other ways of viewing a file include \textbf{cat}, \textbf{head}, and \textbf{tail}. \textbf{cat}'s main purpose is for file con\textbf{cat}ination, but it can also be used to dump a file to the screen by typing:
 \commandline{cat myfile}
-This is great for small files but horrible for larger ones. \textbf{head} and \textbf{tail} will grab the first or last 10 lines, respectively.\footnote{These commands has several other options as well allowing you to grab a variable number of lines. See \textbf{man 1 tail}}.\\
+This is great for small files but horrible for larger ones. \textbf{head} and \textbf{tail} will grab the first or last 10 lines, respectively.\footnote{These commands have several other options as well as allowing you to grab a variable number of lines. See \textbf{man 1 tail}}.\\
 
 \begin{ex} Try running these commands on the file ``numbers" in the directory ``demo"
 \commandline{cat numbers}
